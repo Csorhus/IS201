@@ -1,0 +1,86 @@
+ body {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 15px;
+    color: slategray;
+ }
+ h1{
+    font-size: 35px;
+    text-align: center;
+    font-weight: bold;
+ }
+ a{
+    color: black;
+ }
+ h3{
+    text-decoration: underline;
+    font-weight: bold;
+ }
+ .homebg {
+    background-image: url('Alpine\ Backgorund.jpg');
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+/* Backgrounds, Fonts, Layouts can go here */
+body.homebg {
+    font-family: Arial, sans-serif;
+    background-color: #252525;
+    padding: 20px;
+}
+
+.common {
+    margin: 0 auto;
+    max-width: 900px;
+    padding: 10px;
+}
+
+.header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.subheader a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.leftmenu {
+    background-color: #e2e2e2;
+    padding: 10px;
+}
+
+.mainbody {
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+.section {
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.divider {
+    height: 30px;
+    width: 100%;
+    clear: both;
+}
+
+footer {
+    padding: 10px 0;
+    background-color: #000;
+    color: #ccc;
+    text-align: center;
+}
+.companies {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-style: italic;
+}
+
+html {
+    scroll-padding-top: 100px; /* adjust this as needed */
+}

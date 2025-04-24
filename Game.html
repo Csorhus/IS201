@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guessing Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .common.header, .footer {
+            background-color: #222;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .common.mainbody {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .subheader a {
+            color: #ccc;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .subheader a:hover {
+            text-decoration: underline;
+        }
+
+        .question-block {
+            margin: 30px 0;
+        }
+
+        .question-block h3 {
+            margin-bottom: 10px;
+        }
+
+        .question-block button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border-radius: 5px;
+        }
+
+        .question-block button:hover {
+            background-color: #0056b3;
+        }
+
+        .response {
+            font-size: 18px;
+            margin-top: 20px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .correct {
+            color: green;
+        }
+
+        .incorrect {
+            color: red;
+        }
+
+        #score {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+
+        #resetBtn {
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #resetBtn:hover {
+            background-color: #a71d2a;
+        }
+
+        .footer {
+            margin-top: auto;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="common header">
+        <h1>Guessing Game</h1>
+        <span class="subheader">
+            <a href="index.html">Home</a> |
+            <a href="Scratch.html">Resume</a>
+        </span>
+    </div>
+
+    <div class="common mainbody">
+        <h2>Test Your Constellation Knowledge!</h2>
+
+        <!-- Question 1 -->
+        <div class="question-block">
+            <h3>1. What is the Constellation on the Alaska State Flag?</h3>
+            <button onclick="checkAnswer(this, 'Ursa Major', 'Ursa Major', 0)">Ursa Major</button>
+            <button onclick="checkAnswer(this, 'Ursa Major', 'Ursa Minor', 0)">Ursa Minor</button>
+            <button onclick="checkAnswer(this, 'Ursa Major', 'Orion', 0)">Orion</button>
+            <button onclick="checkAnswer(this, 'Ursa Major', 'Leo', 0)">Leo</button>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question-block">
+            <h3>2. What is the Constellation on the New Zealand Flag?</h3>
+            <button onclick="checkAnswer(this, 'The Southern Cross', 'The Southern Cross', 1)">The Southern Cross</button>
+            <button onclick="checkAnswer(this, 'The Southern Cross', 'Sagittarius', 1)">Sagittarius</button>
+            <button onclick="checkAnswer(this, 'The Southern Cross', 'Scorpius', 1)">Scorpius</button>
+            <button onclick="checkAnswer(this, 'The Southern Cross', 'Antares', 1)">Antares</button>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question-block">
+            <h3>3. What is my favorite constellation?</h3>
+            <button onclick="checkAnswer(this, 'Draco', 'Draco', 2)">Draco</button>
+            <button onclick="checkAnswer(this, 'Draco', 'I don\'t know', 2)">I don't know</button>
+            <button onclick="checkAnswer(this, 'Draco', 'I don\'t care', 2)">I don't care</button>
+            <button onclick="checkAnswer(this, 'Draco', 'what\'s a constellation?', 2)">what's a constellation?</button>
+        </div>
+
+        <div id="response" class="response"></div>
+        <div id="score">Score: 0 / 3</div>
+        <button id="resetBtn" onclick="resetGame()">Reset Game</button>
+    </div>
+
+    <footer class="footer">
+        <div>Copyright &copy; Colton Sorhus 2025</div>
+    </footer>
+
+    <script>
+        let totalScore = 0;
+        let answered = [false, false, false];
+
+        function checkAnswer(button, correctAnswer, userAnswer, questionIndex) {
+            if (answered[questionIndex]) return;
+
+            const response = document.getElementById("response");
+
+            if (userAnswer === correctAnswer) {
+                response.textContent = "Wow okay nerd";
+                response.className = "response correct";
+                totalScore++;
+            } else {
+                response.textContent = "Okay maybe you're not a nerd";
+                response.className = "response incorrect";
+            }
+
+            button.parentElement.querySelectorAll("button").forEach(btn => btn.disabled = true);
+            answered[questionIndex] = true;
+
+            document.getElementById("score").textContent = `Score: ${totalScore} / 3`;
+        }
+
+        function resetGame() {
+            totalScore = 0;
+            answered = [false, false, false];
+            document.getElementById("response").textContent = "";
+            document.getElementById("response").className = "response";
+            document.getElementById("score").textContent = "Score: 0 / 3";
+            document.querySelectorAll("button").forEach(button => {
+                if (button.id !== "resetBtn") {
+                    button.disabled = false;
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+
